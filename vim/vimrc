@@ -1,0 +1,16 @@
+set number
+set relativenumber
+set cindent
+set autoindent
+set ts=4 sw=4
+set expandtab
+
+set undofile
+set swapfile
+set backup
+
+set undodir=~/.vim/undo
+set directory=~/.vim/swap
+set backupdir=~/.vim/backup
+
+set clipboard=unnamedplus
