@@ -1,6 +1,11 @@
 ## rc
+# gruvbox
 # src: https://www.wallpaperflare.com/minimalism-gruvbox-wallpaper-qcaln
-exec feh --bg-fill l/Pictures/Wallpapers/gruvbox.png
+# exec feh --bg-fill l/Pictures/Wallpapers/gruvbox.png
+
+# redfox
+# src: https://peapix.com/bing/45730
+exec feh --bg-fill l/Pictures/Wallpapers/redfox.png
 
 ## Modifiers.
 set $mod Mod4
@@ -9,8 +14,17 @@ floating_modifier $mod
 ## Configs.
 # Appearance.
 font pango:JetBrainsMono SemiBold 11
-client.focused #a89984 #a89984 #282828 #d65d02
-client.unfocused #282828 #282828 #a89984
+
+# gruvbox
+# client.focused #a89984 #a89984 #282828 #d65d02
+# client.unfocused #282828 #282828 #a89984
+
+# redfox
+client.background #35353f
+client.focused #b2c2d2 #b2c2d2 #35353f #d1581c
+client.focused_inactive #687e8c #687e8c #35353f #c4906b
+client.unfocused #35353f #35353f #b2c2d2 #d1581c
+client.urgent #d1581c #d1581c #35353f #b2c2d2
 
 gaps inner 8
 
@@ -18,11 +32,19 @@ bar {
     status_command i3status --config ~/.config/i3/i3status.conf
 
     colors {
-        background #282828
-        focused_workspace #fe8019 #fe8019 #282828
-        active_workspace #a89984 #a89984 #282828
-        inactive_workspace #282828 #282828 #a89984
-        urgent_workspace #fb4934 #fb4934 #282828
+        # gruvbox
+        # background #282828
+        # focused_workspace #fe8019 #fe8019 #282828
+        # active_workspace #a89984 #a89984 #282828
+        # inactive_workspace #282828 #282828 #a89984
+        # urgent_workspace #fb4934 #fb4934 #282828
+
+        # redfox
+        background #35353f
+        focused_workspace #c4906b #c4906b #35353f
+        inactive_workspace #b2c2d2 #b2c2d2 #35353f
+        active_workspace #687e8c #687e8c #35353f
+        urgent_workspace #d1581c #d1581c #35353f
     }
 }
 
@@ -51,7 +73,11 @@ bindsym $mod+Return exec st
 bindsym $mod+Shift+q kill
 
 # dmenu.
-bindsym $mod+d exec --no-startup-id dmenu_run -fn "JetBrains Mono" -sb "#a89984" -sf "#282828"
+# gruvbox
+# bindsym $mod+d exec --no-startup-id dmenu_run -fn "JetBrains Mono" -sb "#a89984" -sf "#282828"
+
+# redfox
+bindsym $mod+d exec --no-startup-id dmenu_run -fn "JetBrains Mono" -sb '#b2c2d2' -nb '#35353f' -sf '#35353f'
 
 # Volume control.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status

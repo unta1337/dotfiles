@@ -10,10 +10,25 @@ floating_modifier $mod normal
 ## Configs.
 # Appearance.
 font Semteulche Bold 10
-client.focused #a89984 #a89984 #282828 #d65d02
-client.unfocused #282828 #282828 #a89984
 
-output * bg ~/Pictures/Wallpapers/gruvbox.png fill
+# gruvbox
+# client.focused #a89984 #a89984 #282828 #d65d02
+# client.unfocused #282828 #282828 #a89984
+
+# redfox
+client.background #35353f
+client.focused #b2c2d2 #b2c2d2 #35353f #d1581c
+client.focused_inactive #687e8c #687e8c #35353f #c4906b
+client.unfocused #35353f #35353f #b2c2d2 #d1581c
+client.urgent #d1581c #d1581c #35353f #b2c2d2
+
+# gruvbox
+# src: https://www.wallpaperflare.com/minimalism-gruvbox-wallpaper-qcaln
+# output * bg ~/Pictures/Wallpapers/gruvbox.png fill
+
+# redfox
+# src: https://peapix.com/bing/45730
+output * bg ~/Pictures/Wallpapers/redfox.png fill
 
 gaps inner 8
 
@@ -21,11 +36,19 @@ bar {
     status_command i3status --config ~/.config/sway/i3status.conf
 
     colors {
-        background #282828
-        focused_workspace #fe8019 #fe8019 #282828
-        active_workspace #a89984 #a89984 #282828
-        inactive_workspace #282828 #282828 #a89984
-        urgent_workspace #fb4934 #fb4934 #282828
+        # gruvbox
+        # background #282828
+        # focused_workspace #fe8019 #fe8019 #282828
+        # active_workspace #a89984 #a89984 #282828
+        # inactive_workspace #282828 #282828 #a89984
+        # urgent_workspace #fb4934 #fb4934 #282828
+
+        # redfox
+        background #35353f
+        focused_workspace #c4906b #c4906b #35353f
+        inactive_workspace #b2c2d2 #b2c2d2 #35353f
+        active_workspace #687e8c #687e8c #35353f
+        urgent_workspace #d1581c #d1581c #35353f
     }
 }
 
@@ -37,7 +60,12 @@ set $right l
 set $term foot
 
 # Misc.
-set $menu dmenu_run -fn "Semteulche:style=Medium:size=10" -m $(swaymsg -t get_outputs | jq 'map(.focused) | index(true)') -sb "#a89984" -sf "#282828"
+# gruvbox
+# set $menu dmenu_run -fn "Semteulche:style=Medium:size=10" -m $(swaymsg -t get_outputs | jq 'map(.focused) | index(true)') -sb "#a89984" -sf "#282828"
+
+# redfox
+set $menu dmenu-wl_run -fn "Semteulche Medium 10" -m $(swaymsg -t get_outputs | jq 'map(.focused) | index(true)') -sb '#b2c2d2' -nb '#35353f' -sf '#35353f'
+
 set $refresh_i3status killall -SIGUSR1 i3status
 
 # Keybard.
