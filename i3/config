@@ -1,6 +1,6 @@
 ## rc
 # src: https://www.wallpaperflare.com/minimalism-gruvbox-wallpaper-qcaln
-exec feh --bg-fill ~/.config/i3/wallpaper/gruvbox.png
+exec feh --bg-fill l/Pictures/Wallpapers/gruvbox.png
 
 ## Modifiers.
 set $mod Mod4

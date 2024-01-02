@@ -13,7 +13,7 @@ font Semteulche Bold 10
 client.focused #a89984 #a89984 #282828 #d65d02
 client.unfocused #282828 #282828 #a89984
 
-output * bg ~/.config/sway/wallpaper/gruvbox.png fill
+output * bg ~/Pictures/Wallpapers/gruvbox.png fill
 
 gaps inner 8
 
