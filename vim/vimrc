@@ -24,7 +24,14 @@ set showcmd
 nnoremap j gj
 nnoremap k gk
 
+cnoremap <C-t> terminal<CR>
+cnoremap <C-S-t> vertical terminal<CR>
+
+cnoremap <C-;> terminal bash -c ""<LEFT>
+cnoremap <C-S-;> vertical terminal bash -c ""<LEFT>
+
 tnoremap <C-S-v> <C-w>"+
+tnoremap <C-w> <C-\><C-n>
 
 source $HOME/.config/vim/scripts/wayland_clipboard.vim
 

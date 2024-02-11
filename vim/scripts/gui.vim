@@ -20,13 +20,13 @@ endfunction
 
 function UpdateGuiFont()
     let &guifont = GetGuiFont()
-    call FitToScreen()
 endfunction
 
 function SetFontSize(size)
     if g:fontSizeLowerLimit <= a:size && a:size <= g:fontSizeUpperLimit
         let g:fontSize = a:size
         call UpdateGuiFont()
+        call FitToScreen()
     endif
 endfunction
 
@@ -36,6 +36,7 @@ function ModFontSize(amount)
     if g:fontSizeLowerLimit <= newFontSize && newFontSize <= g:fontSizeUpperLimit
         let g:fontSize = newFontSize
         call UpdateGuiFont()
+        call FitToScreen()
     endif
 endfunction
 
@@ -45,8 +46,10 @@ nnoremap <C-=> :call ModFontSize(g:defaultFontStep)<CR>
 nnoremap <C-0> :call SetFontSize(g:defaultFontSize)<CR>
 
 " Apply configs
+colorscheme habamax
+
 let &guioptions = substitute(&guioptions, 'T', '', 'g')
 let &guioptions = substitute(&guioptions, 'm', '', 'g')
 let &guioptions = substitute(&guioptions, '[rlRL]', '', 'g')
 
-UpdateGuiFont()
+call UpdateGuiFont()
