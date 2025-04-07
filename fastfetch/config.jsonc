@@ -1,0 +1,79 @@
+{
+    "logo": {
+        "source": "~/.config/fastfetch/imgs/hb_fall.txt",
+        "type": "raw",
+        "padding": {
+            "right": 25
+        }
+    },
+    "display": {
+        "separator": " ",
+        "color": "red"
+    },
+    "modules": [
+        "title",
+        {
+            "type": "custom",
+            "format": "------------------------------"
+        },
+        {
+            "type": "datetime",
+            "key": "TIME  ",
+            "keyColor": "33",
+            "format": "{2}.{3}.{11}. {14}:{18}"
+        },
+        {
+            "type": "os",
+            "key": "OS    ",
+            "keyColor": "33",
+            "format": "{4}"
+        },
+        {
+            "type": "terminal",
+            "key": "TERM  ",
+            "keyColor": "33",
+            "format": "{5}"
+        },
+        {
+            "type": "shell",
+            "key": "SHELL ",
+            "keyColor": "33",
+            "format": "{6}"
+        },
+        {
+            "type": "cpu",
+            "key": "CPU   ",
+            "keyColor": "33",
+            "format": "{1}"
+        },
+        {
+            "type": "gpu",
+            "key": "GPU   ",
+            "keyColor": "33",
+            "format": "{2}"
+        },
+        {
+            "type": "memory",
+            "key": "MEMORY",
+            "keyColor": "33",
+            "format": "{1} / {2}"
+        },
+        {
+            "type": "disk",
+            "key": "DISK  ",
+            "keyColor": "33",
+            "format": "{1} / {2}"
+        },
+        {
+            "type": "uptime",
+            "key": "UPTIME",
+            "keyColor": "33",
+            "format": "{1} {2}:{3}"
+        },
+        {
+            "type": "custom",
+            "format": "------------------------------"
+        },
+        "colors"
+    ]
+}
