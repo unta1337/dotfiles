@@ -11,24 +11,11 @@ floating_modifier $mod normal
 # Appearance.
 font Semteulche Bold 10
 
-# gruvbox
-# client.focused #a89984 #a89984 #282828 #d65d02
-# client.unfocused #282828 #282828 #a89984
-
-# redfox
-client.background #35353f
-client.focused #b2c2d2 #b2c2d2 #35353f #d1581c
-client.focused_inactive #687e8c #687e8c #35353f #c4906b
-client.unfocused #35353f #35353f #b2c2d2 #d1581c
-client.urgent #d1581c #d1581c #35353f #b2c2d2
-
-# gruvbox
-# src: https://www.wallpaperflare.com/minimalism-gruvbox-wallpaper-qcaln
-# output * bg ~/Pictures/Wallpapers/gruvbox.png fill
-
-# redfox
-# src: https://peapix.com/bing/45730
-output * bg ~/Pictures/Wallpapers/redfox.png fill
+# tokyonight-night
+client.focused #c0caf5 #c0caf5 #1a1b26 #f7768e
+client.focused_inactive #1a1b26 #1a1b26 #c0caf5 #f7768e
+client.unfocused #ffffff #ffffff #414868 #f7768e
+client.urgent #f7768e #f7768e #ffffff #c0caf5
 
 gaps inner 8
 
@@ -36,19 +23,14 @@ bar {
     status_command i3status --config ~/.config/sway/i3status.conf
 
     colors {
-        # gruvbox
-        # background #282828
-        # focused_workspace #fe8019 #fe8019 #282828
-        # active_workspace #a89984 #a89984 #282828
-        # inactive_workspace #282828 #282828 #a89984
-        # urgent_workspace #fb4934 #fb4934 #282828
-
-        # redfox
-        background #35353f
-        focused_workspace #c4906b #c4906b #35353f
-        inactive_workspace #b2c2d2 #b2c2d2 #35353f
-        active_workspace #687e8c #687e8c #35353f
-        urgent_workspace #d1581c #d1581c #35353f
+        # tokyonight-night
+        background #ffffff
+        statusline #414868
+        separator #414868
+        focused_workspace #c0caf5 #c0caf5 #1a1b26
+        inactive_workspace #ffffff #ffffff #1a1b26
+        active_workspace #a9b1d6 #a9b1d6 #1a1b26
+        urgent_workspace #f7768e #f7768e #ffffff
     }
 }
 
@@ -60,136 +42,9 @@ set $right l
 set $term foot
 
 # Misc.
-# gruvbox
-# set $menu dmenu_run -fn "Semteulche:style=Medium:size=10" -m $(swaymsg -t get_outputs | jq 'map(.focused) | index(true)') -sb "#a89984" -sf "#282828"
-
-# redfox
-set $menu dmenu-wl_run -fn "Semteulche Medium 10" -m $(swaymsg -t get_outputs | jq 'map(.focused) | index(true)') -sb '#b2c2d2' -nb '#35353f' -sf '#35353f'
+set $menu rofi -show drun -font "Semteulche Bold 12"
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
 # Keybard.
 input * {
-    repeat_delay 400
-    repeat_rate 30
-}
-
-## Key bindings.
-# Terminal.
-bindsym $mod+Return exec $term
-
-# Kill window.
-bindsym $mod+Shift+q kill
-
-# dmenu.
-bindsym $mod+d exec $menu
-
-# Volume control.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-# Media player controls.
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym Shift+XF86AudioNext exec playerctl previous
-bindsym XF86AudioPrev exec playerctl previous
-
-# Move focus.
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
-
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# Move window.
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
-
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# Split window.
-bindsym $mod+b split h
-bindsym $mod+v split v
-
-# Full screen.
-bindsym $mod+f fullscreen toggle
-
-# Change container layout.
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# Floating window.
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
-
-# Focus misc.
-bindsym $mod+a focus parent
-bindsym $mod+Shift+a focus child
-
-# Switch to workspace.
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
-
-# Move focused container to workspace.
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
-
-# Scratchpad.
-# bindsym $mod+Shift+minus move scratchpad
-# bindsym $mod+minus scratchpad show
-
-# Reload config.
-bindsym $mod+Shift+c reload
-# exit sway.
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-
-# Resize window
-mode "resize" {
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+r mode "default"
-}
-bindsym $mod+r mode "resize"
-
-# Screen capture.
-bindsym $mod+Shift+S exec grim -t png -g "$(slurp)" "$HOME/Pictures/Screenshots/$(date +'%y%m%d_%H%M%S').png"
