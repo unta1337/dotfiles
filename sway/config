@@ -47,7 +47,7 @@ set $right l
 set $term foot
 
 # Misc.
-set $menu rofi -show drun -font "Semteulche Bold 12"
+set $menu rofi -show run -font "Semteulche Bold 12"
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
