@@ -1,25 +1,11 @@
 /* See LICENSE file for copyright and license details. */
 
-#define USE_EXTERNAL_COLOR
-
-#ifdef USE_EXTERNAL_COLOR
-#include "./gruvbox_dark.h"
-#endif
-
 /*
  * appearance
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Sarasa Term K Nerd Font:pixelsize=16:antialias=true:autohint=true";
-/* Spare fonts */
-static char *font2[] = {
-       "Droid Sans Mono:style=Regular:pixelsize=14:antialias=true:autohint=true",
-       "Menlo:style=Regular:pixelsize=14:antialias=true:autohint=true",
-       "Inconsolata for Powerline:pixelsize=14:antialias=true:autohint=true",
-       "Hack Nerd Font Mono:pixelsize=14:antialias=true:autohint=true",
-};
-
+static char *font = "Semteulche:size=16:style=Compact Bold";
 static int borderpx = 2;
 
 /*
@@ -105,70 +91,47 @@ char *termname = "st-256color";
  *
  *	stty tabs
  */
-unsigned int tabspaces = 8;
+unsigned int tabspaces = 4;
 
-/* bg opacity */
-float alpha = 0.7;
-
-#ifndef USE_EXTERNAL_COLOR
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
+	/* 8 normal colors */
+    "#15161E",
+    "#f7768e",
+    "#9ece6a",
+    "#e0af68",
+    "#7aa2f7",
+    "#bb9af7",
+    "#7dcfff",
+    "#a9b1d6",
 
-  // /* 8 normal colors */
-  // [0] = "#002b36", /* black   */
-  // [1] = "#dc322f", /* red     */
-  // [2] = "#859900", /* green   */
-  // [3] = "#b58900", /* yellow  */
-  // [4] = "#268bd2", /* blue    */
-  // [5] = "#6c71c4", /* magenta */
-  // [6] = "#2aa198", /* cyan    */
-  // [7] = "#93a1a1", /* white   */
+	/* 8 bright colors */
+    "#414868",
+    "#f7768e",
+    "#9ece6a",
+    "#e0af68",
+    "#7aa2f7",
+    "#bb9af7",
+    "#7dcfff",
+    "#c0caf5",
 
-  // /* 8 bright colors */
-  // [8]  = "#657b83", /* black   */
-  // [9]  = "#dc322f", /* red     */
-  // [10] = "#859900", /* green   */
-  // [11] = "#b58900", /* yellow  */
-  // [12] = "#268bd2", /* blue    */
-  // [13] = "#6c71c4", /* magenta */
-  // [14] = "#2aa198", /* cyan    */
-  // [15] = "#fdf6e3", /* white   */
+	[255] = 0,
 
-  // /* special colors */
-  // [256] = "#000000", /* background */
-  // [257] = "#ffffff", /* foreground */
-
-  [0] = "#2E3436",
-  [1] = "#a40000",
-  [2] = "#4E9A06",
-  [3] = "#C4A000",
-  [4] = "#3465A4",
-  [5] = "#75507B",
-  [6] = "#ce5c00",
-  [7] = "#babdb9",
-  
-  [8] = "#555753",
-  [9] = "#EF2929",
-  [10] = "#8AE234",
-  [11] = "#FCE94F",
-  [12] = "#729FCF",
-  [13] = "#AD7FA8",
-  [14] = "#fcaf3e",
-  [15] = "#EEEEEC",
-  
-  [256] = "#000000",
-  [257] = "#e4e4ef",
+	/* more colors can be added after 255 to use with DefaultXX */
+	"#cccccc",
+	"#555555",
+	"#c0caf5", /* default foreground colour */
+	"#1a1b26", /* default background colour */
 };
+
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 257;
-unsigned int defaultbg = 256;
-unsigned int defaultcs = 257;
-#endif
-
+unsigned int defaultfg = 258;
+unsigned int defaultbg = 259;
+unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
 /*
@@ -184,8 +147,8 @@ static unsigned int cursorshape = 2;
  * Default columns and rows numbers
  */
 
-static unsigned int cols = 80;
-static unsigned int rows = 24;
+static unsigned int cols = 63;
+static unsigned int rows = 16;
 
 /*
  * Default colour and shape of the mouse cursor
