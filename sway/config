@@ -11,7 +11,9 @@ floating_modifier $mod normal
 
 ## Configs.
 # Appearance.
-font Semteulche Bold 10
+# font Semteulche Bold 10
+seat * xcursor_theme Adwaita
+font Sarasa Term K Nerd Font Bold 10
 
 # bg
 output * bg #1a1b26 solid_color
@@ -47,7 +49,8 @@ set $right l
 set $term foot
 
 # Misc.
-set $menu rofi -show run -font "Semteulche Bold 12"
+# set $menu rofi -show run -font "Semteulche Bold 12"
+set $menu rofi -show run
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
