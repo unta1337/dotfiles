@@ -78,9 +78,9 @@ engine:
       Tab:
         behavior: Commit
         result: ConsumeIfProcessed
-  candidate_font: Noto Sans CJK KR
+  candidate_font: Sarasa Term K Nerd Font
   xim_preedit_font:
-  - Noto Sans CJK KR
+  - Sarasa Term K Nerd Font
   - 15.0
   latin:
     layout: Qwerty
@@ -90,7 +90,5 @@ engine:
     word_commit: false
     preedit_johab: Needed
     addons:
-      all:
-      - ComposeChoseongSsang
       dubeolsik:
       - TreatJongseongAsChoseong
