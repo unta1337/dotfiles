@@ -31,4 +31,4 @@ function CompileAndRun()
 endfunction
 
 " Key Bindings
-nnoremap <M-x> :call CompileAndRun()<CR>
+nnoremap <Leader>x :call CompileAndRun()<CR>

@@ -30,6 +30,6 @@ function ResetFontSize()
 endfunction
 
 " Key Bindings
-nnoremap <M-p> :call IncFontSize()<CR>
-nnoremap <M-m> :call DecFontSize()<CR>
-nnoremap <M-r> :call ResetFontSize()<CR>
+nnoremap <Leader>q :call IncFontSize()<CR>
+nnoremap <Leader>w :call DecFontSize()<CR>
+nnoremap <Leader>e :call ResetFontSize()<CR>
