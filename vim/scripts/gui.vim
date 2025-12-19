@@ -1,55 +1,35 @@
-" Default Configurations
-let g:defaultFontSize = 12
-let g:defaultFontStep = 4
-let g:fontSizeLowerLimit = g:defaultFontSize
-let g:fontSizeUpperLimit = 40
-
-" Variables
-let g:fontFamily = "Semteulche Medium Semi-condensed"
-let g:fontSize = g:defaultFontSize
-
-" Functions
-function FitToScreen()
-    let &lines = 999999
-    let &columns = 999999
-endfunction
-
-function GetGuiFont()
-    return g:fontFamily . " " . g:fontSize
-endfunction
-
-function UpdateGuiFont()
-    let &guifont = GetGuiFont()
-endfunction
-
-function SetFontSize(size)
-    if g:fontSizeLowerLimit <= a:size && a:size <= g:fontSizeUpperLimit
-        let g:fontSize = a:size
-        call UpdateGuiFont()
-        call FitToScreen()
-    endif
-endfunction
-
-function ModFontSize(amount)
-    let newFontSize = g:fontSize + a:amount
-
-    if g:fontSizeLowerLimit <= newFontSize && newFontSize <= g:fontSizeUpperLimit
-        let g:fontSize = newFontSize
-        call UpdateGuiFont()
-        call FitToScreen()
-    endif
-endfunction
-
-" Keymaps
-nnoremap  :call ModFontSize(-g:defaultFontStep)<CR>
-nnoremap <C-=> :call ModFontSize(g:defaultFontStep)<CR>
-nnoremap <C-0> :call SetFontSize(g:defaultFontSize)<CR>
-
-" Apply configs
+" Appearance
 colorscheme habamax
+set guioptions=""
 
-let &guioptions = substitute(&guioptions, 'T', '', 'g')
-let &guioptions = substitute(&guioptions, 'm', '', 'g')
-let &guioptions = substitute(&guioptions, '[rlRL]', '', 'g')
+" Screen Dimension
+set lines=32
+set columns=120
 
-call UpdateGuiFont()
+" Font Config
+let s:defaultFontSize = 12
+let s:fontFamily = "Cascadia_Code_SemiBold"
+let s:fontSize = s:defaultFontSize
+let s:fontSizeLowerLimit = 8
+let s:fontSizeUpperLimit = 36
+let &guifont = s:fontFamily . ":" . "h" . s:fontSize
+
+function IncFontSize()
+    let s:fontSize = min([s:fontSize + 2, s:fontSizeUpperLimit])
+    let &guifont = s:fontFamily . ":" . "h" . s:fontSize
+endfunction
+
+function DecFontSize()
+    let s:fontSize = max([s:fontSize - 2, s:fontSizeLowerLimit])
+    let &guifont = s:fontFamily . ":" . "h" . s:fontSize
+endfunction
+
+function ResetFontSize()
+    let s:fontSize = s:defaultFontSize
+    let &guifont = s:fontFamily . ":" . "h" . s:fontSize
+endfunction
+
+" Key Bindings
+nnoremap <Leader>q :call IncFontSize()<CR>
+nnoremap <Leader>w :call DecFontSize()<CR>
+nnoremap <Leader>e :call ResetFontSize()<CR>

@@ -1,4 +1,4 @@
-" For Vim in Terminal
+" Minimal Configs
 set number
 set relativenumber
 
@@ -15,25 +15,18 @@ set undodir=$HOME/.config/vim/undo
 set directory=$HOME/.config/vim/swap
 set backupdir=$HOME/.config/vim/backup
 
-set clipboard=unnamedplus
-
-set timeoutlen=1000 ttimeoutlen=0
-
 set showcmd
+set clipboard=unnamed
+set shell=pwsh
 
-nnoremap j gj
-nnoremap k gk
+" Extra
+let g:mapleader="\\"
 
-cnoremap <C-t> terminal<CR>
-cnoremap <C-S-t> vertical terminal<CR>
+source $HOME/.config/vim/scripts/compile_and_run.vim
 
-cnoremap <C-;> terminal bash -c ""<LEFT>
-cnoremap <C-S-;> vertical terminal bash -c ""<LEFT>
-
-tnoremap <C-S-v> <C-w>"+
-tnoremap <C-w> <C-\><C-n>
-
-source $HOME/.config/vim/scripts/wayland_clipboard.vim
+if has('wayland')
+    source $HOME/.config/vim/scripts/wayland_clipboard.vim
+endif
 
 if has('gui_running')
     source $HOME/.config/vim/scripts/gui.vim
