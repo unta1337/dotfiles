@@ -2,34 +2,38 @@
 colorscheme habamax
 set guioptions=""
 
-" Screen Dimension
-" set lines=32
-" set columns=120
-
 " Font Config
 let s:defaultFontSize = 12
-let s:fontFamily = "Sarasa Term K Nerd Font"
+let s:fontFamily = "Cascadia Code"
 let s:fontSize = s:defaultFontSize
 let s:fontSizeLowerLimit = 8
-let s:fontSizeUpperLimit = 42
+let s:fontSizeUpperLimit = 72
+let s:fontStep = 2
 let &guifont = s:fontFamily . ":" . "h" . s:fontSize . ":b"
 
-function IncFontSize()
-    let s:fontSize = min([s:fontSize + 2, s:fontSizeUpperLimit])
+" Set font size to a:size
+" Note: font size will be aligned by s:fontStep, but to its upper one.
+"       i.e., a:size is 12 and s:fontStep is 2, new font size will be 12.
+"             a:size is 13 and s:fontStep is 2, new font size will be 14.
+function SetFontSize(size)
+    let step = (a:size + s:fontStep - 1) / s:fontStep
+    let newSize = s:fontStep * step
+    let newSize = min([newSize, s:fontSizeUpperLimit])
+    let newSize = max([newSize, s:fontSizeLowerLimit])
+    let s:fontSize = newSize
     let &guifont = s:fontFamily . ":" . "h" . s:fontSize
 endfunction
 
-function DecFontSize()
-    let s:fontSize = max([s:fontSize - 2, s:fontSizeLowerLimit])
-    let &guifont = s:fontFamily . ":" . "h" . s:fontSize
+" Adjust font size by step not size.
+function AdjustFontSize(step)
+    call SetFontSize(s:fontSize + s:fontStep * a:step)
 endfunction
 
 function ResetFontSize()
-    let s:fontSize = s:defaultFontSize
-    let &guifont = s:fontFamily . ":" . "h" . s:fontSize
+    call SetFontSize(s:defaultFontSize)
 endfunction
 
 " Key Bindings
-nnoremap <Leader>q :call IncFontSize()<CR>
-nnoremap <Leader>w :call DecFontSize()<CR>
-nnoremap <Leader>e :call ResetFontSize()<CR>
+nnoremap <silent> <Leader>q <Cmd>call AdjustFontSize(+v:count1)<CR>
+nnoremap <silent> <Leader>w <Cmd>call AdjustFontSize(-v:count1)<CR>
+nnoremap <silent> <Leader>e <Cmd>call ResetFontSize()<CR>
