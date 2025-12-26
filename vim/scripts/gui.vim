@@ -3,16 +3,16 @@ colorscheme habamax
 set guioptions=""
 
 " Screen Dimension
-set lines=32
-set columns=120
+" set lines=32
+" set columns=120
 
 " Font Config
 let s:defaultFontSize = 12
-let s:fontFamily = "Cascadia_Code_SemiBold"
+let s:fontFamily = "Sarasa Term K Nerd Font"
 let s:fontSize = s:defaultFontSize
 let s:fontSizeLowerLimit = 8
-let s:fontSizeUpperLimit = 36
-let &guifont = s:fontFamily . ":" . "h" . s:fontSize
+let s:fontSizeUpperLimit = 42
+let &guifont = s:fontFamily . ":" . "h" . s:fontSize . ":b"
 
 function IncFontSize()
     let s:fontSize = min([s:fontSize + 2, s:fontSizeUpperLimit])
