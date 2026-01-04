@@ -19,6 +19,8 @@ set showcmd
 set clipboard=unnamed
 set shell=pwsh
 
+autocmd VimEnter * set textwidth=0
+
 " Extra
 let g:mapleader=","
 
