@@ -3,10 +3,14 @@ if exists("g:source_loc_utils")
 endif
 let g:source_loc_utils = v:true
 
-let s:locRegex = "\\v^(\\s)@<!([^[:space:]].{-})[:\\(](\\d+)[:,](\\d+)[:\\)]"
+let s:locFileRowColRegex = "\\v^(\\s)@<!([^[:space:]].{-})[:\\(](\\d+)[:,](\\d+)[:\\)]"
+let s:locFileRowRegex = "\\v^(\\s)@<!([^[:space:]].{-})[:\\(](\\d+)[:\\)]"
 
 function GetLoc(line)
-    let line_match = matchlist(a:line, s:locRegex)
+    let line_match = matchlist(a:line, s:locFileRowColRegex)
+    if line_match == []
+        let line_match = matchlist(a:line, s:locFileRowRegex)
+    endif
     if line_match == []
         return v:null
     endif
@@ -14,6 +18,7 @@ function GetLoc(line)
     return [line_match[2], str2nr(line_match[3]), str2nr(line_match[4])]
 endfunction
 
-highlight LU_LocationMSVC cterm=reverse gui=reverse
+highlight LU_Highlight cterm=reverse gui=reverse
 
-autocmd BufWinEnter * call matchadd("LU_LocationMSVC", s:locRegex)
+autocmd BufWinEnter * call matchadd("LU_Highlight", s:locFileRowColRegex)
+autocmd BufWinEnter * call matchadd("LU_Highlight", s:locFileRowRegex)
