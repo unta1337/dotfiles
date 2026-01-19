@@ -22,14 +22,16 @@ set shell=pwsh
 autocmd VimEnter * set textwidth=0
 
 " Extra
-let g:mapleader=","
+let g:mapleader = ","
 
-source $HOME/.config/vim/scripts/compile_and_run.vim
+source $HOME/.config/vim/scripts/compilation_mode/main.vim
 
-if has('wayland')
-    source $HOME/.config/vim/scripts/wayland_clipboard.vim
-endif
+source $HOME/.config/vim/scripts/utils/term_utils.vim
 
 if has('gui_running')
     source $HOME/.config/vim/scripts/gui.vim
+endif
+
+if has('wayland')
+    source $HOME/.config/vim/scripts/wayland_clipboard.vim
 endif
